@@ -1,11 +1,10 @@
 {
   "name": "test-gpb",
   "version": "1.0.0",
-  "description": "test for gpb",
+  "description": "- Сделать веб-страницу, через которую передается 2-а файла (csv, приложены) и возвращается результирующий файл",
   "main": "index.js",
-  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index"
   },
   "repository": {
     "type": "git",
@@ -16,10 +15,5 @@
   "bugs": {
     "url": "https://github.com/kvrdv/test-gpb/issues"
   },
-  "homepage": "https://github.com/kvrdv/test-gpb#readme",
-  "dependencies": {
-    "chalk": "^5.0.0",
-    "file-system": "^2.2.2",
-    "fs": "^0.0.1-security"
-  }
+  "homepage": "https://github.com/kvrdv/test-gpb#readme"
 }

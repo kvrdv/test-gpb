@@ -1,0 +1,25 @@
+{
+  "name": "test-gpb",
+  "version": "1.0.0",
+  "description": "test for gpb",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kvrdv/test-gpb.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kvrdv/test-gpb/issues"
+  },
+  "homepage": "https://github.com/kvrdv/test-gpb#readme",
+  "dependencies": {
+    "chalk": "^5.0.0",
+    "file-system": "^2.2.2",
+    "fs": "^0.0.1-security"
+  }
+}

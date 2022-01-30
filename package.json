@@ -4,7 +4,7 @@
   "description": "- Сделать веб-страницу, через которую передается 2-а файла (csv, приложены) и возвращается результирующий файл",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node ./src/js/index.js"
   },
   "repository": {
     "type": "git",

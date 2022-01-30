@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>test-gpb</title>
+    <link rel="stylesheet" href="./styles/style.css" />
+  </head>
+  <body>
+    <form class="form-upload" action="#" method="post" enctype="multipart/form-data">
+      <h1>Загрузка даннных</h1>
+      <div>
+        <p>Выберите первый файл:</p>
+        <input type="file" name="input-1" />
+      </div>
+
+      <div>
+        <p>Выберите второй файл:</p>
+        <input type="file" name="input-2" />
+      </div>
+
+      <div class="button-download"><input type="submit" value="Загрузить файлы" /></div>
+    </form>
+
+    <table>
+      <thead>
+        <tr>
+          <th colspan="5" class="table-header"><h1>Результат</h1></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Операций всего</td>
+          <td class="data-total"></td>
+        </tr>
+        <tr>
+          <td>Успешных операций (совпадение по математическому оператору)</td>
+          <td class="data-success"></td>
+        </tr>
+        <tr>
+          <td>Несостоявшиеся операции (ошибка в данных)</td>
+          <td class="data-failed"></td>
+        </tr>
+        <tr>
+          <td>Номера операций с ошибками в файле 1</td>
+          <td class="data-failed-data1"></td>
+        </tr>
+        <tr>
+          <td>Номера операций с ошибками в файле 2</td>
+          <td class="data-failed-data2"></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <button><a href="./data/output.json" download>Скачать результат</a></button>
+
+    <script type="module" src="./js/index.js"></script>
+  </body>
+</html>

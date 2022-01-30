@@ -61,6 +61,19 @@ function getResult() {
     failedInput2: failedInput2,
   });
 
+  // отображаем данные в ui
+  // const dataTotal = document.querySelector('.data-total');
+  // const dataSuccess = document.querySelector('.data-success');
+  // const dataFailed = document.querySelector('.data-failed');
+  // const dataFailedData1 = document.querySelector('.data-failed-data1');
+  // const dataFailedData2 = document.querySelector('.data-failed-data2');
+
+  // dataTotal.innerText = operationNumber;
+  // dataSuccess.innerText = operationSuccess;
+  // dataFailed.innerText = failedInput1.length + failedInput2.length;
+  // dataFailedData1 = failedInput1;
+  // dataFailedData2 = failedInput2;
+
   // записываем результат в файл
   const filePath = path.join(__dirname, 'data', 'output.json');
   fs.writeFile(filePath, JSON.stringify(output), function (err) {

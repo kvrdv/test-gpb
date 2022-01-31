@@ -8,8 +8,8 @@ function getResult() {
   let input2;
 
   try {
-    input1 = JSON.parse(fs.readFileSync('./src/data/input1.json', 'utf8'));
-    input2 = JSON.parse(fs.readFileSync('./src/data/input2.json', 'utf8'));
+    input1 = JSON.parse(fs.readFileSync('data/input1.json', 'utf8'));
+    input2 = JSON.parse(fs.readFileSync('data/input2.json', 'utf8'));
   } catch (err) {
     console.log('Error reading file');
   }
@@ -25,7 +25,6 @@ function getResult() {
   let operationSuccess = 0;
   let failedInput1 = [];
   let failedInput2 = [];
-  // let output = [];
 
   for (let i = 0; i < theLength[0]; i++) {
     operationNumber++;
@@ -43,6 +42,8 @@ function getResult() {
         let value1 = input1[i][Object.keys(input1[i])[0]];
         let value2 = input2[i][Object.keys(input2[i])[0]];
         let result = eval(value1 + operator1 + value2);
+
+        // записываем данные в выходной массив
         output.push({
           operation: operationNumber,
           value1: value1,
@@ -54,6 +55,7 @@ function getResult() {
     }
   }
 
+  // записываем статистику в выходной массив
   output.unshift({
     total: operationNumber,
     success: operationSuccess,
@@ -63,7 +65,7 @@ function getResult() {
   });
 
   // записываем результат в файл
-  const filePath = path.join(__dirname, './src/data', 'output.json');
+  const filePath = path.join(__dirname, 'data', 'output.json');
   fs.writeFile(filePath, JSON.stringify(output), function (err) {
     if (err) throw err;
   });
@@ -73,6 +75,7 @@ function getResult() {
 
 getResult();
 
+// отрисовываем html
 const http = require('http');
 const host = 'localhost';
 const port = 8000;
@@ -170,7 +173,7 @@ const requestListener = function (req, res) {
         </tbody>
       </table>
   
-      <button><a href="./data/output.json" download>Скачать результат</a></button>
+      <button><a href="data/output.json" download>Скачать результат</a></button>
     </body>
   </html>`);
 };

@@ -1,3 +1,11 @@
 **/.DS_Store
 
+**/dist
+
+**/_dist
+
 **/node_modules
+
+**/.parcel-cache/
+
+**/output.json

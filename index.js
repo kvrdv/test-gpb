@@ -1,5 +1,6 @@
 const path = require('path');
 const fs = require('fs');
+let output = [];
 
 function getResult() {
   // синхронно получаем входящие данные из файлов
@@ -7,8 +8,8 @@ function getResult() {
   let input2;
 
   try {
-    input1 = JSON.parse(fs.readFileSync('./data/input1.json', 'utf8'));
-    input2 = JSON.parse(fs.readFileSync('./data//input2.json', 'utf8'));
+    input1 = JSON.parse(fs.readFileSync('./src/data/input1.json', 'utf8'));
+    input2 = JSON.parse(fs.readFileSync('./src/data/input2.json', 'utf8'));
   } catch (err) {
     console.log('Error reading file');
   }
@@ -24,7 +25,7 @@ function getResult() {
   let operationSuccess = 0;
   let failedInput1 = [];
   let failedInput2 = [];
-  let output = [];
+  // let output = [];
 
   for (let i = 0; i < theLength[0]; i++) {
     operationNumber++;
@@ -61,26 +62,120 @@ function getResult() {
     failedInput2: failedInput2,
   });
 
-  // отображаем данные в ui
-  // const dataTotal = document.querySelector('.data-total');
-  // const dataSuccess = document.querySelector('.data-success');
-  // const dataFailed = document.querySelector('.data-failed');
-  // const dataFailedData1 = document.querySelector('.data-failed-data1');
-  // const dataFailedData2 = document.querySelector('.data-failed-data2');
-
-  // dataTotal.innerText = operationNumber;
-  // dataSuccess.innerText = operationSuccess;
-  // dataFailed.innerText = failedInput1.length + failedInput2.length;
-  // dataFailedData1 = failedInput1;
-  // dataFailedData2 = failedInput2;
-
   // записываем результат в файл
-  const filePath = path.join(__dirname, 'data', 'output.json');
+  const filePath = path.join(__dirname, './src/data', 'output.json');
   fs.writeFile(filePath, JSON.stringify(output), function (err) {
     if (err) throw err;
   });
 
-  return;
+  return output;
 }
 
 getResult();
+
+const http = require('http');
+const host = 'localhost';
+const port = 8000;
+
+const requestListener = function (req, res) {
+  res.setHeader('Content-Type', 'text/html');
+  res.writeHead(200);
+  res.end(`<!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>test-gpb</title>
+      <style> 
+      body {
+        width: 700px;
+      }
+      
+      h1 {
+        text-align: left;
+      }
+      
+      .form-upload {
+        padding: 5px;
+        border: 1px solid black;
+      }
+      
+      table,
+      th,
+      td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        padding: 5px;
+      }
+      
+      table {
+        width: 100%;
+        margin: 24px 0;
+      }
+      
+      .button-download {
+        margin: 24px 0;
+      }
+      
+      a, a:visited {
+        color: black;
+        text-decoration: none;
+      }
+      </style>
+    </head>
+    <body>
+      <form class="form-upload" action="#" method="post" enctype="multipart/form-data">
+        <h1>Загрузка даннных</h1>
+        <div>
+          <p>Выберите первый файл:</p>
+          <input type="file" name="input-1" />
+        </div>
+  
+        <div>
+          <p>Выберите второй файл:</p>
+          <input type="file" name="input-2" />
+        </div>
+  
+        <div class="button-download"><input type="submit" value="Загрузить файлы" /></div>
+      </form>
+  
+      <table>
+        <thead>
+          <tr>
+            <th colspan="5" class="table-header"><h1>Результат</h1></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Операций всего</td>
+            <td class="data-total">${output[0].total}</td>
+          </tr>
+          <tr>
+            <td>Успешных операций (совпадение по математическому оператору)</td>
+            <td class="data-success">${output[0].success}</td>
+          </tr>
+          <tr>
+            <td>Несостоявшиеся операции (ошибка в данных)</td>
+            <td class="data-failed">${output[0].failedInput1.length + output[0].failedInput2.length}</td>
+          </tr>
+          <tr>
+            <td>Номера операций с ошибками в файле 1</td>
+            <td class="data-failed-data1">${output[0].failedInput1}</td>
+          </tr>
+          <tr>
+            <td>Номера операций с ошибками в файле 2</td>
+            <td class="data-failed-data2">${output[0].failedInput2}</td>
+          </tr>
+        </tbody>
+      </table>
+  
+      <button><a href="./data/output.json" download>Скачать результат</a></button>
+    </body>
+  </html>`);
+};
+
+const server = http.createServer(requestListener);
+server.listen(port, host, () => {
+  console.log(`Server is running on http://${host}:${port}`);
+});

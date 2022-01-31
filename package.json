@@ -4,8 +4,7 @@
   "description": "- Сделать веб-страницу, через которую передается 2-а файла (csv, приложены) и возвращается результирующий файл",
   "main": "index.js",
   "scripts": {
-    "node": "node src/js/index.js",
-    "parcel": "npx parcel src/index.html"
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -16,8 +15,5 @@
   "bugs": {
     "url": "https://github.com/kvrdv/test-gpb/issues"
   },
-  "homepage": "https://github.com/kvrdv/test-gpb#readme",
-  "devDependencies": {
-    "parcel": "^2.2.1"
-  }
+  "homepage": "https://github.com/kvrdv/test-gpb#readme"
 }

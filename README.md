@@ -1,14 +1,14 @@
-### Команда для запуска программы - ___npm start___ 
-### Сервер запускается по адресу - ___http://localhost:8000/___
+### To start the program - ___npm start___ 
+### Server starts at the address - ___http://localhost:8000/___
 
 ***
 
-### Задача:
+### Tasks:
 
-- Сделать веб-страницу, через которую передается 2-а файла (csv, приложены) и возвращается результирующий файл
+- Make a web page that passes 2 files (csv, appended) and returns the resulting file
 
-- на странице статистика обработки (кол-во результатов, операций...)
+- on the processing statistics page (number of results, operations...)
 
-- файлы имеют формат: <число>; <математическая операция>
+- files have the format: <number>; <math operation>
 
-- если операция в переданных файлах совпадает - необходимо её выполнить с числами из файлов и результат сохранить в третьем файле.
+- If the operation in the passed files coincides - it is necessary to execute it with the numbers from the files and save the result in the third file

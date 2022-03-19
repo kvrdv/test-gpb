@@ -1,7 +1,7 @@
 {
   "name": "test-gpb",
   "version": "1.0.0",
-  "description": "- Сделать веб-страницу, через которую передается 2-а файла (csv, приложены) и возвращается результирующий файл",
+  "description": "test-gpb",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"

@@ -3,7 +3,7 @@ const fs = require('fs');
 let output = [];
 
 function getResult() {
-  // синхронно получаем входящие данные из файлов
+  // synchronously receive incoming data from the files
   let input1;
   let input2;
 
@@ -14,13 +14,13 @@ function getResult() {
     console.log('Error reading file');
   }
 
-  // вычисляем длину самого короткого массива
+  // calculate the length of the shortest array
   const theLength = [input1.length, input2.length];
   theLength.sort(function (a, b) {
     return a - b;
   });
 
-  // обрабатываем полученные данные в цикле
+  // process the obtained data in the cycle
   let operationNumber = 0;
   let operationSuccess = 0;
   let failedInput1 = [];
@@ -43,7 +43,7 @@ function getResult() {
         let value2 = input2[i][Object.keys(input2[i])[0]];
         let result = eval(value1 + operator1 + value2);
 
-        // записываем данные в выходной массив
+        // write data to the output array
         output.push({
           operation: operationNumber,
           value1: value1,
@@ -55,7 +55,7 @@ function getResult() {
     }
   }
 
-  // записываем статистику в выходной массив
+  // write the statistics to the output array
   output.unshift({
     total: operationNumber,
     success: operationSuccess,
@@ -64,7 +64,7 @@ function getResult() {
     failedInput2: failedInput2,
   });
 
-  // записываем результат в файл
+  // write the result to a file
   const filePath = path.join(__dirname, 'data', 'output.json');
   fs.writeFile(filePath, JSON.stringify(output), function (err) {
     if (err) throw err;
@@ -75,7 +75,7 @@ function getResult() {
 
 getResult();
 
-// отрисовываем html
+// rendering html
 const http = require('http');
 const host = 'localhost';
 const port = 8000;
@@ -129,14 +129,14 @@ const requestListener = function (req, res) {
     </head>
     <body>
       <form class="form-upload" action="#" method="post" enctype="multipart/form-data">
-        <h1>Загрузка даннных</h1>
+        <h1>Load data</h1>
         <div>
-          <p>Выберите первый файл:</p>
+          <p>File 1:</p>
           <input type="file" name="input-1" />
         </div>
   
         <div>
-          <p>Выберите второй файл:</p>
+          <p>File 2:</p>
           <input type="file" name="input-2" />
         </div>
   
@@ -151,29 +151,29 @@ const requestListener = function (req, res) {
         </thead>
         <tbody>
           <tr>
-            <td>Операций всего</td>
+            <td>Total operations</td>
             <td class="data-total">${output[0].total}</td>
           </tr>
           <tr>
-            <td>Успешных операций (совпадение по математическому оператору)</td>
+            <td>Success operations (matched by a mathematical operator)</td>
             <td class="data-success">${output[0].success}</td>
           </tr>
           <tr>
-            <td>Несостоявшиеся операции (ошибка в данных)</td>
+            <td>Failed operations (data error)</td>
             <td class="data-failed">${output[0].failedInput1.length + output[0].failedInput2.length}</td>
           </tr>
           <tr>
-            <td>Номера операций с ошибками в файле 1</td>
+            <td>Numbers of operations with errors in file 1</td>
             <td class="data-failed-data1">${output[0].failedInput1}</td>
           </tr>
           <tr>
-            <td>Номера операций с ошибками в файле 2</td>
+            <td>Numbers of operations with errors in file 2</td>
             <td class="data-failed-data2">${output[0].failedInput2}</td>
           </tr>
         </tbody>
       </table>
   
-      <button><a href="data/output.json" download>Скачать результат</a></button>
+      <button><a href="data/output.json" download>Download result</a></button>
     </body>
   </html>`);
 };

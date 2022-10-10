@@ -8,12 +8,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kvrdv/test-gpb.git"
+    "url": "git+https://github.com/bencubin/test-gpb.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/kvrdv/test-gpb/issues"
+    "url": "https://github.com/bencubin/test-gpb/issues"
   },
-  "homepage": "https://github.com/kvrdv/test-gpb#readme"
+  "homepage": "https://github.com/bencubin/test-gpb#readme"
 }

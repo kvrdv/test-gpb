@@ -1,14 +1,16 @@
-### To start the program - ___npm start___ 
-### Server starts at the address - ___http://localhost:8000/___
+# test-gpb
+Node.js test assignment for a fintech company 
 
-***
+---
 
-### Tasks:
+#### To start the program - ```npm start``` 
 
-- Make a web page that passes 2 files (csv, appended) and returns the resulting file
+#### Server starts at the address - http://localhost:8000/
 
-- on the processing statistics page (number of results, operations...)
+#### Tasks:
 
-- files have the format: <number>; <math operation>
+1. Create web form that takes 2 JSON files and returns 1 file as a result
 
-- If the operation in the passed files coincides - it is necessary to execute it with the numbers from the files and save the result in the third file
+2. After processing show operations statistics
+
+3. Files have the format - number/math operation, if the operation in the passed files coincides - it is necessary to execute it with the numbers from the files and save the result in the third file

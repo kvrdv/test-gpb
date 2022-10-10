@@ -140,13 +140,13 @@ const requestListener = function (req, res) {
           <input type="file" name="input-2" />
         </div>
   
-        <div class="button-download"><input type="submit" value="Загрузить файлы" /></div>
+        <div class="button-download"><input type="submit" value="Upload files" /></div>
       </form>
   
       <table>
         <thead>
           <tr>
-            <th colspan="5" class="table-header"><h1>Результат</h1></th>
+            <th colspan="5" class="table-header"><h1>Result</h1></th>
           </tr>
         </thead>
         <tbody>
